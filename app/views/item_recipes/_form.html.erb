@@ -1,0 +1,28 @@
+<%= form_with(model: [@recipe, @item_recipe], local: true) do |form| %>
+  <% if @item_recipe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@item_recipe.errors.count, "error") %> prohibited this item_recipe from being saved:</h2>
+
+      <ul>
+        <% @item_recipe.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :quantidade %>
+    <%= form.number_field :quantidade %>
+  </div>
+
+  <div class="field">
+    <%= form.label :produto_id %>
+    <%= form.select :produto_id, Produto.where(user_id: current_user.id).collect{ |p| [ p.nome, p.id] },
+          {prompt: 'Escolha o produto'} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>

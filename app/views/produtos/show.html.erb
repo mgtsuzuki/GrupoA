@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @produto.nome %>
+</p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @produto.quantidade %>
+</p>
+
+<p>
+  <strong>Data validade:</strong>
+  <%= @produto.data_validade %>
+</p>
+
+<p>
+  <strong>Tipos de quantidade:</strong>
+  <%= @produto.tipos_de_quantidade %>
+</p>
+
+<%= link_to 'Edit', edit_user_produto_path(@user, @produto) %> |
+<%= link_to 'Back', user_produtos_path(@user) %>

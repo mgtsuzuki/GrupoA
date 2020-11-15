@@ -1,0 +1,15 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nome:</strong>
+  <%= @recipe.nome %>
+</p>
+
+<p>
+  <strong>Descricao:</strong>
+  <%= @recipe.descricao %>
+</p>
+
+<%= link_to 'Inclui Ingrediente', recipe_item_recipes_path(@recipe) %> |
+<%= link_to 'Edit', edit_user_recipe_path(@user, @recipe) %> |
+<%= link_to 'Back', user_recipes_path(@user) %>

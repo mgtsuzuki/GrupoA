@@ -1,0 +1,31 @@
+<h1>10Pensa</h1>
+
+<p id="notice"><%= notice %></p>
+
+<% if !current_user.recipes.empty? %>
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Descricao</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% current_user.recipes.each do |recipe| %>
+      <% if recipecomingredientes?(recipe) %>
+      <tr>
+        <td><%= recipe.nome %></td>
+        <td><%= recipe.descricao %></td>
+        <td><%= link_to 'Show', user_recipe_path(current_user, recipe) %></td>
+        <td><%= button_to 'Atualiza Estoque', area_path(recipe), method: :put %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p>Você não posui receitas!</p>
+<% end %>
+<br>

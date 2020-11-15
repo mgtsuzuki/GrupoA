@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Item Recipes</h1>
+
+<% if !@recipe.item_recipe.empty? %>
+<table>
+  <thead>
+    <tr>
+      <th>Quantidade</th>
+      <th>Produto</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @item_recipes.each do |item_recipe| %>
+      <tr>
+        <td><%= item_recipe.quantidade %></td>
+        <td><%= Produto.find(item_recipe.produto_id).nome %></td>
+        <td><%= link_to 'Show', recipe_item_recipe_path(@recipe, item_recipe) %></td>
+        <td><%= link_to 'Edit', edit_recipe_item_recipe_path(@recipe, item_recipe) %></td>
+        <td><%= link_to 'Destroy', recipe_item_recipe_path(@recipe, item_recipe), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% else %>
+<p>A receita não posui produtos!</p>
+<% end %>
+
+<br>
+
+<%= link_to 'New Item Recipe', new_recipe_item_recipe_path(@recipe) %>

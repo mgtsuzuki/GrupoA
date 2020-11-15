@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Quantidade:</strong>
+  <%= @item_recipe.quantidade %>
+</p>
+
+<p>
+  <strong>Produto:</strong>
+  <%= Produto.find(@item_recipe.produto_id).nome  %>
+</p>
+
+<%= link_to 'Edit', edit_recipe_item_recipe_path(@recipe, @item_recipe) %> |
+<%= link_to 'Back', recipe_item_recipes_path(@recipe) %>
